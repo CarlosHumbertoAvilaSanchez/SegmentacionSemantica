@@ -6,9 +6,9 @@ import cv2
 import numpy as np
 import tensorflow as tf
 from config import imshape
-from tensorflow.keras import backend as K
-from tensorflow.keras.callbacks import ModelCheckpoint
-from tensorflow.keras.layers import (
+from keras import backend as K
+from keras.callbacks import ModelCheckpoint
+from keras.layers import (
     Conv2D,
     Conv2DTranspose,
     Dropout,
@@ -18,8 +18,8 @@ from tensorflow.keras.layers import (
     SeparableConv2D,
     concatenate,
 )
-from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import Adam
+from keras.models import Model
+from keras.optimizers import Adam
 
 
 def weighted_cross_entropy(beta):

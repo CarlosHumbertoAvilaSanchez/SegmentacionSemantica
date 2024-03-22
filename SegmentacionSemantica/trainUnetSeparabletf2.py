@@ -7,8 +7,8 @@ import pandas as pd
 import tensorflow as tf
 from config import clases
 from imageAugment import DataGenerator
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from tensorflow.keras.models import load_model
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.models import load_model
 
 physical_devices = tf.config.experimental.list_physical_devices("GPU")
 tf.config.experimental.set_memory_growth(physical_devices[0], True)

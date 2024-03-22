@@ -3,9 +3,9 @@ import modelUnetSeparabletf2 as mu
 import numpy as np
 import tensorflow as tf
 from config import clases, imshape
-from tensorflow.keras import backend as K
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from tensorflow.keras.models import load_model
+from keras import backend as K
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.models import load_model
 
 IMAGE_FILE_PATH = "../images/00403.jpg"
 WEIGHTS_FILE_PATH = "pesosunetseparable256final.h5"
