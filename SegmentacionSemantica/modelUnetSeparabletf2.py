@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import os
 import numpy as np
+<<<<<<< HEAD
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, concatenate, Conv2D, MaxPooling2D, Conv2DTranspose, SeparableConv2D
 from tensorflow.keras.layers import Dropout, Lambda
@@ -11,6 +12,26 @@ from tensorflow.keras import backend as K
 import tensorflow as tf
 import cv2
 from config import imshape
+=======
+import tensorflow as tf
+from config import imshape
+from keras import backend as K
+from keras.callbacks import ModelCheckpoint
+from keras.layers import (
+    Conv2D,
+    Conv2DTranspose,
+    Dropout,
+    Input,
+    Lambda,
+    MaxPooling2D,
+    SeparableConv2D,
+    concatenate,
+)
+from keras.models import Model
+from keras.optimizers import Adam
+
+
+>>>>>>> b77eae1397328dea32ebc07c3c5be4cbcbc2cdac
 def weighted_cross_entropy(beta):
   def loss(y_true, y_pred):
     weight_a = beta * tf.cast(y_true, tf.float32)

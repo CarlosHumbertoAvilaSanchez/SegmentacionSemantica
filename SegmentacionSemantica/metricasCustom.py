@@ -1,6 +1,6 @@
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras import backend as K
+from keras import backend as K
 
 
 def dice(y_true, y_pred, smooth=1.0):

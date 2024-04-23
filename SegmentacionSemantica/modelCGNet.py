@@ -4,9 +4,9 @@ import numpy as np
 import tensorflow as tf
 from config import imshape
 from metricasCustom import *
-from tensorflow.keras import backend as K
-from tensorflow.keras.callbacks import ModelCheckpoint
-from tensorflow.keras.layers import (
+from keras import backend as K
+from keras.callbacks import ModelCheckpoint
+from keras.layers import (
     Add,
     AveragePooling2D,
     BatchNormalization,
@@ -20,8 +20,8 @@ from tensorflow.keras.layers import (
     PReLU,
     UpSampling2D,
 )
-from tensorflow.keras.models import Model
-from tensorflow.keras.optimizers import Adam
+from keras.models import Model
+from keras.optimizers import Adam
 
 
 def BNPReLU(x):
