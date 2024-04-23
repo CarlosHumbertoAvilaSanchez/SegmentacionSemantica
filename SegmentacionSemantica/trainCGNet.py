@@ -59,7 +59,7 @@ modelo = mu.modelCGNet()
 modelo.load_weights("pesosCGNet.h5")
 history = modelo.fit_generator(
     tg,
-    steps_per_epoch=1,  # cambiar por cantidad de imagenes
+    steps_per_epoch=62,  # cambiar por cantidad de imagenes
     callbacks=[checkpoint],
     epochs=100,
 )

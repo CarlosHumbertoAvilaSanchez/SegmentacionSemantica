@@ -14,8 +14,8 @@ physical_devices = tf.config.experimental.list_physical_devices("GPU")
 tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
 
-IMAGES_PATH = "../images"  # img
-LABLES_PATH = "../labels"  # json
+IMAGES_PATH = "../testImage"  # img
+LABLES_PATH = "../testLabel"  # json
 WEIGHTS_FILE_PATH = "pesosunetseparable256final.h5"
 
 
@@ -27,7 +27,7 @@ image_paths = [os.path.join(IMAGES_PATH, x) for x in sorted_fns(IMAGES_PATH)]
 annot_paths = [os.path.join(LABLES_PATH, x) for x in sorted_fns(LABLES_PATH)]
 
 tg = DataGenerator(
-    image_paths=image_paths, annot_paths=annot_paths, batch_size=16, augment=False
+    image_paths=image_paths, annot_paths=annot_paths, batch_size=1, augment=False
 )
 
 
@@ -41,7 +41,7 @@ modelo = mu.modelUnet()
 # model = load_model('modelPrebatch512v2.h5', custom_objects={'dice': mu.dice})
 modelo.load_weights(WEIGHTS_FILE_PATH)
 history = modelo.fit_generator(
-    tg, steps_per_epoch=62, callbacks=[checkpoint], epochs=10
+    tg, steps_per_epoch=1, callbacks=[checkpoint], epochs=10000
 )
 
 

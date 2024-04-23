@@ -31,8 +31,8 @@ def salida2RGB(salida, clases):
     return salidaRGB
 
 
-dirImagenes = "../images"  # img
-dirAnotaciones = "../labels"  # json
+dirImagenes = "../testImage"  # img
+dirAnotaciones = "../testLabel"  # json
 
 
 def sorted_fns(dir):
@@ -46,7 +46,7 @@ image_paths = [os.path.join(dirImagenes, x) for x in sorted_fns(dirImagenes)]
 annot_paths = [os.path.join(dirAnotaciones, x) for x in sorted_fns(dirAnotaciones)]
 
 tg = DataGenerator(
-    image_paths=image_paths, annot_paths=annot_paths, batch_size=2, augment=False
+    image_paths=image_paths, annot_paths=annot_paths, batch_size=1, augment=False
 )
 
 width = 256

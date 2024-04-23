@@ -32,8 +32,8 @@ def salida2RGB(salida, clases):
     return salidaRGB
 
 
-dirImagenes = "../images"
-dirAnotaciones = "../labels"
+dirImagenes = "../testImage"
+dirAnotaciones = "../testLabel"
 
 
 def sorted_fns(dir):
@@ -44,11 +44,35 @@ image_paths = [os.path.join(dirImagenes, x) for x in sorted_fns(dirImagenes)]
 annot_paths = [os.path.join(dirAnotaciones, x) for x in sorted_fns(dirAnotaciones)]
 
 tg = DataGenerator(
-    image_paths=image_paths, annot_paths=annot_paths, batch_size=8, augment=True
+    image_paths=image_paths, annot_paths=annot_paths, batch_size=1, augment=False
 )
 
-
+width = 256
+height = 256
+dim = (width, height)
+img = cv2.imread("../images/00550.jpg")  # CAMBIAR
+img = cv2.resize(img, dim)
+cv2.imshow("input", img)
+img = np.expand_dims(img, axis=0) / 255
 modelo = mu.modelUnet()
 modelo.load_weights("pesosunetseparable256final.h5")
+
 algo = modelo.evaluate(tg)
-print(algo)
+
+preds_train = np.array(modelo.predict(img))
+
+# print(preds_train)
+salidaFinal = preds_train.squeeze()
+print("salida ", salidaFinal.shape)
+print("tamaño de prediction", preds_train.shape)
+for i in range(len(clases)):
+    cv2.imshow(clases[i]["label"], salidaFinal[:, :, i])
+    # print(salidaFinal[:,:,i].dtype)
+    cv2.waitKey()
+# cv2.imshow("salida",np.uint8(salidaFinal*255))
+
+salidaNew = salida2RGB(preds_train.squeeze(), clases)
+# print(salidaNew.shape)
+cv2.imshow("salidaBien", salidaNew)
+cv2.waitKey()
+cv2.destroyAllWindows()

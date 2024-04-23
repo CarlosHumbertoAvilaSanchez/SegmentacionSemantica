@@ -7,7 +7,7 @@ from tensorflow.keras import backend as K
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tensorflow.keras.models import load_model
 
-IMAGE_FILE_PATH = "../images/00403.jpg"
+IMAGE_FILE_PATH = "../images/00105.jpg"
 WEIGHTS_FILE_PATH = "pesosunetseparable256final.h5"
 
 IMAGE_WIDTH = 256
